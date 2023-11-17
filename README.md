@@ -10,8 +10,8 @@
 - ORMs
 
 ### File Structure
-    └── sql_app
-        ├── init.py
+    └── src
+        ├── __init__.py
         ├── crud.py
         ├── database.py
         ├── main.py
@@ -31,7 +31,7 @@
   - Later we will inherit from this class to create each of the database models or classes (the ORM models):
 - Create the database models
   - Now let's see the file sql_app/models.py.
-  - Create SQLAlchemy models from the `Base` class**
+  - Create SQLAlchemy models from the `Base` class
   - Create model attributes/columns**
   - Create the relationships**
 - Create the Pydantic models:

@@ -21,9 +21,7 @@ SQL_TYPE = os.getenv("SQL_TYPE")
 
 
 # Thay đổi đường dẫn kết nối để sử dụng SQL Server
-# SQLALCHEMY_DATABASE_URL = f"{SQL_TYPE}+pyodbc://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_URL}/{DATABASE_NAME}"
-# SQLALCHEMY_DATABASE_URL ='mssql+pyodbc://SA:123456@driver=ODBC+Driver+17+for+SQL+Server;server=localhost;port=1433;database=TTTN_DongHoOnline'
-SQLALCHEMY_DATABASE_URL = "mssql+pyodbc://SA:123456@localhost:1433/TTTN_DongHoOnline?driver=ODBC+Driver+17+for+SQL+Server"
+SQLALCHEMY_DATABASE_URL = f"mssql+pyodbc://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_URL}/{DATABASE_NAME}?driver=ODBC+Driver+17+for+SQL+Server"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
