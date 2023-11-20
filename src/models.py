@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from sqlalchemy import Boolean, Float, Column, Integer, String, DateTime, func, ForeignKey, Date, Numeric
 from sqlalchemy.orm import relationship
 from .database import Base
@@ -25,6 +27,15 @@ class OrderEntity(Base):
     status = Column(String, nullable=False)
     delivery_address = Column(String)
     contact = Column(String(length=15))
+
+    created_at = Column(DateTime, server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime,
+        server_default=func.now(),
+        server_onupdate=func.now(),
+        nullable=False,
+    )
+    deleted_at = Column(DateTime, nullable=True)
 
     discount_id = Column(Integer, ForeignKey('Discounts.discount_id'))  # Fix the reference here
     discount = relationship('DiscountEntity', lazy='joined')
