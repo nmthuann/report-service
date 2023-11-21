@@ -4,15 +4,7 @@ from typing import List
 
 from src import models
 from src.common.Enums.enums import OrderStatus
-from src.database import SessionLocal
 
-
-# def get_db():
-#     db = SessionLocal()
-#     try:
-#         yield db
-#     finally:
-#         db.close()
 
 
 def get_orders(db: Session, skip: int = 0, limit: int = 100):
@@ -27,8 +19,6 @@ async def get_completed_orders_this_year(db: Session, year: int, skip: int = 0, 
     find_orders =  (
         db.query(models.OrderEntity)
         .filter(models.OrderEntity.status == OrderStatus.Completed.value)
-        # .filter(models.OrderEntity.created_at >= start_date)
-        # .filter(models.OrderEntity.created_at < end_date)
         .filter(models.OrderEntity.created_at.between(start_date, end_date))
         .order_by(models.OrderEntity.order_id)
         .offset(skip)
